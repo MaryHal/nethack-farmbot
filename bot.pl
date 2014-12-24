@@ -875,6 +875,27 @@ while(1){
                 $nhmessage="";
                 $waitingforinput=0;
             }
+
+            if ($nhmessage =~ /do_offer: unknown extended command/){
+                debug "Sacrifice Toggle";
+
+                $dosacrifice = !$dosacrifice;
+                $nhmessage="";
+                $running = 1;
+                $waitingforinput=0;
+                next;
+            }
+
+            if ($nhmessage =~ /do_pray: unknown extended command/){
+                debug "Pray Toggle";
+
+                $dopray = !$dopray;
+                $nhmessage="";
+                $running = 1;
+                $waitingforinput=0;
+                next;
+            }
+
             if (!$running){
                 if ($nhmessage=~//){
                     $nhmessage=~s/^.*(.*)/$1/;
